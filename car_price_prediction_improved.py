@@ -615,6 +615,41 @@ def show_prediction(
         f"${estimated_low:,.2f} to ${estimated_high:,.2f}"
     )
 
+def resolve_inputs(bundle: dict, manufacturer_raw: str, model_raw: str,
+                   car_age: float, mileage: float,
+                   accidents: int, one_owner: int) -> tuple[pd.DataFrame, str | None, bool]:
+    """
+    Normalise and fuzzy-match user inputs, build the feature DataFrame.
+    Returns (user_df, notice_message, is_fallback).
+    """
+    manufacturer = normalize_text(manufacturer_raw)
+    model        = normalize_text(model_raw)
+    notice       = None
+
+    if manufacturer not in bundle["known_manufacturers"]:
+        suggestion = suggest_similar_value(manufacturer, bundle["known_manufacturers"])
+        if suggestion:
+            notice       = f"Interpreted as {suggestion.title()}."
+            manufacturer = suggestion
+
+    if manufacturer in bundle["known_manufacturers"]:
+        known_models = bundle["known_models_by_make"].get(manufacturer, set())
+        if model not in known_models:
+            suggestion = suggest_similar_value(model, known_models)
+            if suggestion:
+                model = suggestion
+
+    user_df = add_engineered_features(pd.DataFrame([{
+        "manufacturer":        manufacturer,
+        "model":               model,
+        "car_age":             float(car_age),
+        "mileage":             float(mileage),
+        "accidents_or_damage": accidents,
+        "one_owner":           one_owner,
+    }]))
+
+    is_fallback = manufacturer not in bundle["known_manufacturers"]
+    return user_df, notice, is_fallback
 
 def main() -> None:
     """
