@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: #f5f0e8 !important;
+}
+
+.block-container {
+    max-width: 680px !important;
+    padding: 2rem 2rem 4rem !important;
+}
+
+.header {
+    padding: 2.5rem 0 2rem;
+    border-bottom: 2px solid #1a1a1a;
+    margin-bottom: 2.5rem;
+}
+.header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.05;
+    margin: 0 0 0.5rem;
+}
+.header p {
+    font-size: 0.9rem;
+    color: #888;
+    margin: 0;
+}
+
+.section-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #d6d0c6;
+    display: block;
+}
+
+.result {
+    border-left: 4px solid #1a1a1a;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    background: #eee9df;
+}
+.result-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 0.35rem;
+}
+.result-price {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1;
+}
+.result-range {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 0.6rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid #d6d0c6;
+}
+
+.notice {
+    font-size: 0.82rem;
+    padding: 0.6rem 1rem;
+    margin-top: 1.25rem;
+    border-left: 3px solid;
+}
+.notice.info { border-color: #1a1a1a; background: #ede8de; color: #1a1a1a; }
+.notice.warn { border-color: #b45309;  background: #fef3c7; color: #92400e; }
+
+label { font-size: 0.78rem !important; color: #666 !important; }
+
+input[type="number"]:focus,
+input[type="text"]:focus {
+    border-color: #1a1a1a !important;
+    box-shadow: none !important;
+}
+
+
+[data-testid="InputInstructions"] { display: none !important; }
+
+.stButton > button[kind="primary"] {
+    background: #1a1a1a !important;
+    color: #f5f0e8 !important;
+    border: none !important;
+    border-radius: 2px !important;
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.06em !important;
+    height: 2.75rem !important;
+    margin-top: 1.25rem !important;
+}
+.stButton > button[kind="primary"]:hover {
+    background: #2e2e2e !important;
+}
+
+footer { visibility: hidden; }
